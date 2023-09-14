@@ -1,9 +1,11 @@
 <script>
     import { ArrowRight, Icon } from "svelte-hero-icons";
-    import { Link } from "svelte-navigator";
+    import {Link, useNavigate} from "svelte-navigator";
     const handleSubmit = (e) => {
         e.preventDefault()
     }
+
+    const navigator = useNavigate()
   
   </script>
   
@@ -37,7 +39,7 @@
       </div>
   
       <section class="flex items-center justify-center space-x-3">
-          <div on:keydown={()=>{}} on:click={()=>window.miniapp.login("google")} class='h-[44px] w-[44px] cursor-pointer bg-[#FFFFFF] shadow-lg flex items-center justify-center rounded-lg'>
+          <div on:keydown={()=>{}} on:click={()=>navigator('/home')} class='h-[44px] w-[44px] cursor-pointer bg-[#FFFFFF] shadow-lg flex items-center justify-center rounded-lg'>
               <img src="/images/google.png" alt="google icon" class="h-[24px] w-[24px] object-cover rounded-lg">
           </div> 
           <div class='h-[44px] w-[44px] bg-[#FFFFFF] shadow-lg flex items-center justify-center rounded-lg'>

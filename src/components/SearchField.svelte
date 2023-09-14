@@ -48,7 +48,7 @@
   </div>
 </main>
 
-<section class="mt-6  flex space-x-2 overflow-scroll scrollbar-hide  snap-x ">
+<section class="mt-6  flex space-x-2 overflow-scroll scrollbar-hide snap-x ">
   {#each categories as cat}
     <button
       on:click={() => handleClick(cat.title)}

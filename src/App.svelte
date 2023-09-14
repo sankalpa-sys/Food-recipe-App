@@ -87,32 +87,24 @@
     <Route path="/"><SplashScreen /></Route>
     <main class=" px-[13px] md:py-20  md:max-w-xl max-w-full mx-auto font-poppins">
       <Route path="/home">
-        {#if user}
+
           <Home {foods} {loading} {getFoods} {user} {categoryName} />
-        {:else}
-          <Login />
-        {/if}
+
       </Route>
       <Route path="/recipee/:id">
-        {#if user}
+
           <SingleRecipee />
-        {:else}
-          <Login />
-        {/if}
+
       </Route>
       <Route path="/register">
-        {#if !user}
+
           <Register />
-        {:else}
-          <Home {user} {foods} {loading} {getFoods} {categoryName} />
-        {/if}
+
       </Route>
       <Route path="/login">
-        {#if !user}
+
           <Login />
-        {:else}
-          <Home {user} {foods} {loading} {getFoods} {categoryName} />
-        {/if}
+
       </Route>
     </main>
   </Router>
