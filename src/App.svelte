@@ -2,11 +2,10 @@
   import "./app.css";
   import { onMount } from "svelte";
   import Home from "./pages/Home.svelte";
-  import { Router, Route, navigate, useLocation } from "svelte-navigator";
+  import { Router, Route } from "svelte-navigator";
   import SingleRecipee from "./pages/SingleRecipee.svelte";
   import Register from "./pages/Register.svelte";
   import Login from "./pages/Login.svelte";
-  import { miniAppInitializer } from "./miniAppInitializer";
   import SplashScreen from "./pages/SplashScreen.svelte";
   import NoData from "./components/NoData.svelte";
   let foods = [];
@@ -61,23 +60,7 @@
 
   onMount(() => getFoods());
 
-  const handleInit = () => {
-    loadingPage = true;
-    miniAppInitializer()
-      .then((data) => {
-        if (data.user_profile) {
-          user = data.user_profile;
-        }
-        loadingPage = false;
-        // navigate("/home", {replace: true})
-      })
-      .catch((e) => {
-        console.log(e);
-        loadingPage = false;
-      });
-  };
 
-  onMount(() => handleInit());
 </script>
 
 {#if loadingPage === true}
@@ -87,24 +70,16 @@
     <Route path="/"><SplashScreen /></Route>
     <main class=" px-[13px] md:py-20  md:max-w-xl max-w-full mx-auto font-poppins">
       <Route path="/home">
-
           <Home {foods} {loading} {getFoods} {user} {categoryName} />
-
       </Route>
       <Route path="/recipee/:id">
-
           <SingleRecipee />
-
       </Route>
       <Route path="/register">
-
           <Register />
-
       </Route>
       <Route path="/login">
-
           <Login />
-
       </Route>
     </main>
   </Router>
